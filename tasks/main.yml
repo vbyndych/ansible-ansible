@@ -1,0 +1,13 @@
+---
+- name: Ensure python-apt is installed
+  command: >
+    apt-get install python-apt -y -q
+    creates=/usr/share/doc/python-apt
+  sudo: yes
+
+- name: Install ansible environment
+  sudo: true
+  apt: pkg={{item}} state=present
+    with_items:
+     - python-pycurl
+     - python-mysqldb
